@@ -15,6 +15,7 @@
 		E71673381D8772F300BA9C6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71673361D8772F300BA9C6A /* LaunchScreen.storyboard */; };
 		E71673431D8772F400BA9C6A /* ScribeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71673421D8772F400BA9C6A /* ScribeTests.swift */; };
 		E716734E1D8772F400BA9C6A /* ScribeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716734D1D8772F400BA9C6A /* ScribeUITests.swift */; };
+		E71673621D8788AB00BA9C6A /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71673611D8788AB00BA9C6A /* Reminder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E71673491D8772F400BA9C6A /* ScribeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScribeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E716734D1D8772F400BA9C6A /* ScribeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScribeUITests.swift; sourceTree = "<group>"; };
 		E716734F1D8772F400BA9C6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E71673611D8788AB00BA9C6A /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				E71673361D8772F300BA9C6A /* LaunchScreen.storyboard */,
 				E71673391D8772F300BA9C6A /* Info.plist */,
 				E71673311D8772F300BA9C6A /* Scribe.xcdatamodeld */,
+				E71673611D8788AB00BA9C6A /* Reminder.swift */,
 			);
 			path = Scribe;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				E716732D1D8772F300BA9C6A /* ViewController.swift in Sources */,
 				E716732B1D8772F300BA9C6A /* AppDelegate.swift in Sources */,
 				E71673331D8772F300BA9C6A /* Scribe.xcdatamodeld in Sources */,
+				E71673621D8788AB00BA9C6A /* Reminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
