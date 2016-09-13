@@ -24,6 +24,9 @@ class Reminder {
     
     var debugTestReminder = reminderStruct(title: "Test Title", givenBy: "Test Me", notes: "Some test notes", date: NSDate())
     
+    
+    
+    // Saves the newly created reminder to CoreData
     func saveReminder() -> Bool {
         // Saves the reminder to CoreData
         
@@ -32,10 +35,19 @@ class Reminder {
         
     }
     
+    // Edits an already created reminder
     func editReminder() -> Bool {
         // Edits a specific part of the reminder then saves to CoreData
         
         // Temp change later
         return false
+    }
+    
+    // Takes NSDate type and converts to string so controller can display to view as text
+    func dateToString(date: NSDate) -> String {
+        let dateFormatter  = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
+        
+        return dateFormatter.stringFromDate(date)
     }
 }
