@@ -5,6 +5,7 @@
 //  Created by Anthony Zaprzalka on 9/12/16.
 //  Copyright © 2016 Anthony Zaprzalka. All rights reserved.
 //
+//  Main landing page for the application
 
 import UIKit
 
@@ -13,8 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let newReminder = Reminder()
-        displayPinnedReminder(newReminder)
+        let newQuest = Quest()
+        displayPinnedQuest(newQuest)
     }
     
     override func viewDidLayoutSubviews() {
@@ -35,7 +36,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var completeLabel: UIButton!
     @IBOutlet weak var viewQuestListLabel: UIButton!
     
-
+    @IBAction func viewPinnedQuestViewController(segue: UIStoryboardSegue) {
+    }
+    
     // Add one sided borders to bottom buttons to distinguish touch areas
     func addBtnBorder(btn: UIButton!) {
         let border = CALayer()
@@ -60,10 +63,10 @@ class ViewController: UIViewController {
     }
     
     // Landing page to display upcoming reminder or user pinned reminder
-    func displayPinnedReminder(rmd: Reminder) {
-        titleLabel.text = rmd.debugTestReminder.title
-        timeRemainingLabel.text = rmd.dateToString(rmd.debugTestReminder.date)
-        givenByLabel.text = rmd.debugTestReminder.givenBy
+    func displayPinnedQuest(qst: Quest) {
+        titleLabel.text = qst.debugTestQuest.title
+        timeRemainingLabel.text = qst.dateToString(qst.debugTestQuest.date)
+        givenByLabel.text = qst.debugTestQuest.givenBy
     }
 
 

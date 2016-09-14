@@ -3,12 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--mainLandingPage-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Scribe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="mainLandingPage" id="BYZ-38-t0r" customClass="ViewController" customModule="Scribe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="53" id="f3j-oP-Exo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Remaining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg7-OS-Dzh">
@@ -32,7 +33,7 @@
                                     <constraint firstAttribute="height" constant="53" id="d9i-P3-tsx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Given By" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMh-Ax-xg3">
@@ -41,7 +42,7 @@
                                     <constraint firstAttribute="height" constant="53" id="trg-wZ-j0c"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ui-0S-pTJ">
@@ -63,7 +64,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="4V7-lQ-7Ec" kind="show" id="B7a-lz-S9s"/>
+                                    <segue destination="W19-sw-eMK" kind="show" id="c11-xB-PLE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -99,23 +100,128 @@
             </objects>
             <point key="canvasLocation" x="263" y="422"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="zWU-uj-Gg5">
+        <!--addNewQuest-->
+        <scene sceneID="QFm-zv-uIo">
             <objects>
-                <viewController id="4V7-lQ-7Ec" sceneMemberID="viewController">
+                <viewController title="addNewQuest" id="6ti-U7-b2O" customClass="AddQuestViewController" customModule="Scribe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9kw-Pk-i6T"/>
-                        <viewControllerLayoutGuide type="bottom" id="Xib-8L-jPc"/>
+                        <viewControllerLayoutGuide type="top" id="yZN-JK-cGn"/>
+                        <viewControllerLayoutGuide type="bottom" id="WZe-du-agl"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Sei-53-m0F">
+                    <view key="view" contentMode="scaleToFill" id="PUV-PP-w6e">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Quest Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DKA-v8-zJG">
+                                <rect key="frame" x="0.0" y="65" width="600" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DKA-v8-zJG" firstAttribute="top" secondItem="yZN-JK-cGn" secondAttribute="bottom" constant="1" id="8xU-7L-XlD"/>
+                            <constraint firstItem="DKA-v8-zJG" firstAttribute="leading" secondItem="PUV-PP-w6e" secondAttribute="leadingMargin" constant="-20" id="jn6-43-LZM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DKA-v8-zJG" secondAttribute="trailing" constant="-20" id="mJr-6N-eXo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New Quest" id="BWm-bt-XGa">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SAw-qa-Jke">
+                            <connections>
+                                <segue destination="VfZ-uo-ogR" kind="unwind" unwindAction="viewQuestLogViewController:" id="9t9-y2-Y62"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="KnU-lM-vAy">
+                            <connections>
+                                <segue destination="VfZ-uo-ogR" kind="unwind" unwindAction="saveQuestToQuestLogViewController:" id="jeo-gF-RBS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addQuestTitleField" destination="DKA-v8-zJG" id="8Eb-1u-qer"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dbC-t9-78p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VfZ-uo-ogR" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3107" y="422"/>
+        </scene>
+        <!--questLogView-->
+        <scene sceneID="ZXZ-EM-GN3">
+            <objects>
+                <tableViewController title="questLogView" id="nbe-yb-HLE" customClass="QuestLogViewController" customModule="Scribe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zUl-mf-t4a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IlU-dl-ZbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestCell" id="hNa-mk-Bh3">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hNa-mk-Bh3" id="7vK-QO-svu">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nbe-yb-HLE" id="Vsr-AR-Um2"/>
+                            <outlet property="delegate" destination="nbe-yb-HLE" id="mve-aQ-a4s"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Quest Log" id="T9y-BG-C0z">
+                        <barButtonItem key="leftBarButtonItem" title="Pinned" id="1uW-eJ-vtN">
+                            <connections>
+                                <segue destination="nio-UT-Nnl" kind="unwind" unwindAction="viewPinnedQuestViewController:" id="GTY-OB-cDZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ows-0l-Dgm">
+                            <connections>
+                                <segue destination="C1m-XX-9xy" kind="showDetail" id="Rlh-2h-cAK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gmx-Dd-xFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nio-UT-Nnl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="422"/>
+            <point key="canvasLocation" x="1656" y="422"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="v1k-pm-hLV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C1m-XX-9xy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Qg-qb-MeA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6ti-U7-b2O" kind="relationship" relationship="rootViewController" id="zKR-RE-oqy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fJi-ZA-UzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2365" y="422"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FCn-ma-E1B">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W19-sw-eMK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o3l-fO-Bog">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nbe-yb-HLE" kind="relationship" relationship="rootViewController" id="lIV-pA-YNb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SWc-IU-Pay" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="976" y="422"/>
         </scene>
     </scenes>
 </document>
