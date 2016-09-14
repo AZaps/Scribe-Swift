@@ -25,7 +25,6 @@ class QuestLogViewController: UITableViewController {
     }
     
     @IBAction func saveQuestToQuestLogViewController(segue: UIStoryboardSegue) {
-        // Save the user inputted quest then return back to the Quest Log
-        
+        // Update the table view if neccessary
     }
 }

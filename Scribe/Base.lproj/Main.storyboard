@@ -133,12 +133,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="KnU-lM-vAy">
                             <connections>
-                                <segue destination="VfZ-uo-ogR" kind="unwind" unwindAction="saveQuestToQuestLogViewController:" id="jeo-gF-RBS"/>
+                                <action selector="saveNewQuest:" destination="6ti-U7-b2O" id="Zcs-dy-hJe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addQuestTitleField" destination="DKA-v8-zJG" id="8Eb-1u-qer"/>
+                        <segue destination="VfZ-uo-ogR" kind="unwind" identifier="saveQuestBtn" unwindAction="saveQuestToQuestLogViewController:" id="Jky-aG-ZHp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbC-t9-78p" userLabel="First Responder" sceneMemberID="firstResponder"/>
