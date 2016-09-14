@@ -30,6 +30,19 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var addQuestTitleField: UITextField!
     
     
+    
+    @IBAction func saveNewQuest(sender: AnyObject) {
+        if addQuestTitleField.text == "" {
+            print("Empty title")
+        } else {
+            print("Saving")
+            // Save the quest
+            
+            // Return back to the quest log
+            self.performSegueWithIdentifier("saveQuestBtn", sender: self)
+        }
+    }
+    
     // Keyboard dismisses on return key
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
