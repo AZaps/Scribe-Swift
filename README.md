@@ -1,4 +1,4 @@
-#Scribe-Swift
+#Scribe iOS App in Swift
 Currently in development app built for iOS devices in Swift.
 
 I am hosting this project on Github as a way for others to learn and also for myself to improve my own coding capabilities.
