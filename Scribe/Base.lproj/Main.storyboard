@@ -120,7 +120,7 @@
                                             <constraint firstAttribute="height" constant="50" id="nDO-EP-y9N"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                     </textField>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="43X-D5-dHk">
                                         <rect key="frame" x="0.0" y="160" width="600" height="216"/>
@@ -134,7 +134,7 @@
                                             <constraint firstAttribute="height" constant="50" id="d6U-uk-hvV"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete By" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miU-Yy-pCj">
                                         <rect key="frame" x="0.0" y="128" width="600" height="21"/>
@@ -151,6 +151,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="155" id="hXA-dz-Exj"/>
                                         </constraints>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -206,6 +207,8 @@
                         <outlet property="addGivenByField" destination="3BA-Ub-n1S" id="bxq-kA-gF4"/>
                         <outlet property="addNotesView" destination="Q9t-EP-IPj" id="dah-XG-aa6"/>
                         <outlet property="addQuestTitleField" destination="dJE-DT-RyV" id="2YW-OH-SC5"/>
+                        <outlet property="completeByLabel" destination="miU-Yy-pCj" id="yNd-AD-rYh"/>
+                        <outlet property="completionDatePicker" destination="43X-D5-dHk" id="DNs-rR-Z87"/>
                         <outlet property="scrollView" destination="pch-55-atU" id="RCb-9D-756"/>
                         <segue destination="VfZ-uo-ogR" kind="unwind" identifier="saveQuestBtn" unwindAction="saveQuestToQuestLogViewController:" id="Jky-aG-ZHp"/>
                     </connections>

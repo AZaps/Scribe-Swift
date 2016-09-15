@@ -26,7 +26,6 @@ class Quest {
     var debugTestQuest = questStruct(title: "Test Title", givenBy: "Test Me", notes: "Some test notes", date: NSDate())
     
     
-    
     // Saves the newly created quest to CoreData
     func saveQuest() -> Bool {
         // Saves the quest to CoreData
@@ -42,13 +41,5 @@ class Quest {
         
         // Temp change later
         return false
-    }
-    
-    // Takes NSDate type and converts to string so controller can display to view as text
-    func dateToString(date: NSDate) -> String {
-        let dateFormatter  = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
-        
-        return dateFormatter.stringFromDate(date)
     }
 }

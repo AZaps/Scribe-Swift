@@ -15,6 +15,7 @@
 		E71673381D8772F300BA9C6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71673361D8772F300BA9C6A /* LaunchScreen.storyboard */; };
 		E71673431D8772F400BA9C6A /* ScribeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71673421D8772F400BA9C6A /* ScribeTests.swift */; };
 		E716734E1D8772F400BA9C6A /* ScribeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716734D1D8772F400BA9C6A /* ScribeUITests.swift */; };
+		E7993C8A1D8A3FE8007FD980 /* DateExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7993C891D8A3FE8007FD980 /* DateExtenstions.swift */; };
 		E7DDE8F81D88E94300BE76B3 /* QuestLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDE8F71D88E94300BE76B3 /* QuestLogViewController.swift */; };
 		E7DDE8FA1D88EE6500BE76B3 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDE8F91D88EE6500BE76B3 /* Quest.swift */; };
 		E7DDE8FC1D88F0EB00BE76B3 /* AddQuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DDE8FB1D88F0EB00BE76B3 /* AddQuestViewController.swift */; };
@@ -52,6 +53,7 @@
 		E71673491D8772F400BA9C6A /* ScribeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScribeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E716734D1D8772F400BA9C6A /* ScribeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScribeUITests.swift; sourceTree = "<group>"; };
 		E716734F1D8772F400BA9C6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7993C891D8A3FE8007FD980 /* DateExtenstions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtenstions.swift; sourceTree = "<group>"; };
 		E7DDE8F71D88E94300BE76B3 /* QuestLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestLogViewController.swift; sourceTree = "<group>"; };
 		E7DDE8F91D88EE6500BE76B3 /* Quest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
 		E7DDE8FB1D88F0EB00BE76B3 /* AddQuestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddQuestViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				E716732E1D8772F300BA9C6A /* Main.storyboard */,
 				E7DDE8FB1D88F0EB00BE76B3 /* AddQuestViewController.swift */,
 				E7DDE8F91D88EE6500BE76B3 /* Quest.swift */,
+				E7993C891D8A3FE8007FD980 /* DateExtenstions.swift */,
 				E7DDE8F71D88E94300BE76B3 /* QuestLogViewController.swift */,
 				E71673341D8772F300BA9C6A /* Assets.xcassets */,
 				E71673361D8772F300BA9C6A /* LaunchScreen.storyboard */,
@@ -273,6 +276,7 @@
 			files = (
 				E7DDE8F81D88E94300BE76B3 /* QuestLogViewController.swift in Sources */,
 				E716732D1D8772F300BA9C6A /* ViewController.swift in Sources */,
+				E7993C8A1D8A3FE8007FD980 /* DateExtenstions.swift in Sources */,
 				E716732B1D8772F300BA9C6A /* AppDelegate.swift in Sources */,
 				E71673331D8772F300BA9C6A /* Scribe.xcdatamodeld in Sources */,
 				E7DDE8FA1D88EE6500BE76B3 /* Quest.swift in Sources */,
