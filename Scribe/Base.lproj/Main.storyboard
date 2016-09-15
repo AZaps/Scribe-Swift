@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--mainLandingPage-->
@@ -103,26 +102,90 @@
         <!--addNewQuest-->
         <scene sceneID="QFm-zv-uIo">
             <objects>
-                <viewController title="addNewQuest" id="6ti-U7-b2O" customClass="AddQuestViewController" customModule="Scribe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="addNewQuest" automaticallyAdjustsScrollViewInsets="NO" id="6ti-U7-b2O" customClass="AddQuestViewController" customModule="Scribe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yZN-JK-cGn"/>
                         <viewControllerLayoutGuide type="bottom" id="WZe-du-agl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PUV-PP-w6e">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Quest Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DKA-v8-zJG">
-                                <rect key="frame" x="0.0" y="65" width="600" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="pch-55-atU">
+                                <rect key="frame" x="0.0" y="64" width="600" height="936"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Who Gives this Quest?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3BA-Ub-n1S">
+                                        <rect key="frame" x="0.0" y="66" width="600" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="nDO-EP-y9N"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textField>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="43X-D5-dHk">
+                                        <rect key="frame" x="0.0" y="160" width="600" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="495568019.05890298">
+                                            <!--2016-09-14 17:46:59 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What is Your Quest?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dJE-DT-RyV">
+                                        <rect key="frame" x="0.0" y="4" width="600" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="d6U-uk-hvV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete By" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miU-Yy-pCj">
+                                        <rect key="frame" x="0.0" y="128" width="600" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="hkU-nN-Qtr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add additional information?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Q9t-EP-IPj">
+                                        <rect key="frame" x="0.0" y="381" width="600" height="155"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="155" id="hXA-dz-Exj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="miU-Yy-pCj" firstAttribute="leading" secondItem="43X-D5-dHk" secondAttribute="leading" id="2Bs-XP-cdS"/>
+                                    <constraint firstItem="dJE-DT-RyV" firstAttribute="leading" secondItem="3BA-Ub-n1S" secondAttribute="leading" id="8jp-Ko-NTY"/>
+                                    <constraint firstItem="dJE-DT-RyV" firstAttribute="centerX" secondItem="pch-55-atU" secondAttribute="centerX" id="Cy8-Ak-zDg"/>
+                                    <constraint firstItem="3BA-Ub-n1S" firstAttribute="trailing" secondItem="miU-Yy-pCj" secondAttribute="trailing" id="OUt-rS-cHc"/>
+                                    <constraint firstItem="miU-Yy-pCj" firstAttribute="top" secondItem="3BA-Ub-n1S" secondAttribute="bottom" constant="12" id="Qfh-Gy-6Qz"/>
+                                    <constraint firstItem="3BA-Ub-n1S" firstAttribute="top" secondItem="dJE-DT-RyV" secondAttribute="bottom" constant="12" id="SdE-8I-KyR"/>
+                                    <constraint firstItem="dJE-DT-RyV" firstAttribute="top" secondItem="pch-55-atU" secondAttribute="top" constant="4" id="WRa-nn-H37"/>
+                                    <constraint firstItem="43X-D5-dHk" firstAttribute="leading" secondItem="Q9t-EP-IPj" secondAttribute="leading" id="Z6x-QR-dZu"/>
+                                    <constraint firstItem="dJE-DT-RyV" firstAttribute="leading" secondItem="pch-55-atU" secondAttribute="leading" id="b0t-lv-sHi"/>
+                                    <constraint firstItem="43X-D5-dHk" firstAttribute="top" secondItem="miU-Yy-pCj" secondAttribute="bottom" constant="11" id="dRI-4j-4jY"/>
+                                    <constraint firstItem="43X-D5-dHk" firstAttribute="trailing" secondItem="Q9t-EP-IPj" secondAttribute="trailing" id="h4I-ei-7OY"/>
+                                    <constraint firstItem="3BA-Ub-n1S" firstAttribute="leading" secondItem="miU-Yy-pCj" secondAttribute="leading" id="iA1-Hk-wah"/>
+                                    <constraint firstAttribute="trailing" secondItem="dJE-DT-RyV" secondAttribute="trailing" id="naw-JU-ALZ"/>
+                                    <constraint firstItem="miU-Yy-pCj" firstAttribute="trailing" secondItem="43X-D5-dHk" secondAttribute="trailing" id="p52-OQ-ori"/>
+                                    <constraint firstAttribute="bottom" secondItem="Q9t-EP-IPj" secondAttribute="bottom" constant="400" id="pcC-Oz-77B"/>
+                                    <constraint firstItem="Q9t-EP-IPj" firstAttribute="top" secondItem="43X-D5-dHk" secondAttribute="bottom" constant="5" id="roD-U3-3h7"/>
+                                    <constraint firstItem="dJE-DT-RyV" firstAttribute="trailing" secondItem="3BA-Ub-n1S" secondAttribute="trailing" id="yB3-GA-tbO"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="cGH-Cx-EWV" appends="YES" id="8i3-OV-L6F"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DKA-v8-zJG" firstAttribute="top" secondItem="yZN-JK-cGn" secondAttribute="bottom" constant="1" id="8xU-7L-XlD"/>
-                            <constraint firstItem="DKA-v8-zJG" firstAttribute="leading" secondItem="PUV-PP-w6e" secondAttribute="leadingMargin" constant="-20" id="jn6-43-LZM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DKA-v8-zJG" secondAttribute="trailing" constant="-20" id="mJr-6N-eXo"/>
+                            <constraint firstItem="pch-55-atU" firstAttribute="top" secondItem="yZN-JK-cGn" secondAttribute="bottom" id="DAe-Ed-kUo"/>
+                            <constraint firstAttribute="trailing" secondItem="pch-55-atU" secondAttribute="trailing" id="JSF-qc-N23"/>
+                            <constraint firstItem="pch-55-atU" firstAttribute="leading" secondItem="PUV-PP-w6e" secondAttribute="leading" id="XIY-Qq-Gmc"/>
+                            <constraint firstItem="WZe-du-agl" firstAttribute="top" secondItem="pch-55-atU" secondAttribute="bottom" id="e19-aY-JPZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Quest" id="BWm-bt-XGa">
@@ -137,15 +200,25 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="1000"/>
                     <connections>
-                        <outlet property="addQuestTitleField" destination="DKA-v8-zJG" id="8Eb-1u-qer"/>
+                        <outlet property="addGivenByField" destination="3BA-Ub-n1S" id="bxq-kA-gF4"/>
+                        <outlet property="addNotesView" destination="Q9t-EP-IPj" id="dah-XG-aa6"/>
+                        <outlet property="addQuestTitleField" destination="dJE-DT-RyV" id="2YW-OH-SC5"/>
+                        <outlet property="scrollView" destination="pch-55-atU" id="RCb-9D-756"/>
                         <segue destination="VfZ-uo-ogR" kind="unwind" identifier="saveQuestBtn" unwindAction="saveQuestToQuestLogViewController:" id="Jky-aG-ZHp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbC-t9-78p" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="VfZ-uo-ogR" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="cGH-Cx-EWV">
+                    <connections>
+                        <action selector="hideKeyboard:" destination="6ti-U7-b2O" id="qOF-sK-cE5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3107" y="422"/>
+            <point key="canvasLocation" x="3110" y="422"/>
         </scene>
         <!--questLogView-->
         <scene sceneID="ZXZ-EM-GN3">
