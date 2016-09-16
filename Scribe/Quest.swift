@@ -12,25 +12,45 @@ import CoreData
 
 class Quest {
     
-    // Constructor for a quest
-    struct questStruct {
-        var title: String
-        var givenBy: String?
-        var notes: String?
-        var date: NSDate
-        
-    }
+    /*
+        Core Data Structure
+     
+        Quest
+        forKey Values:
+            title
+            notes
+            givenBy
+            date
+     */
     
-    var myQuestStruct = [questStruct(title: "", givenBy: nil, notes: nil, date: NSDate())]
-    
-    var debugTestQuest = questStruct(title: "Test Title", givenBy: "Test Me", notes: "Some test notes", date: NSDate())
+    // Quest Properties
+    var title: String = ""
+    var givenBy: String?
+    var notes: String?
+    var date: NSDate = NSDate()
     
     
     // Saves the newly created quest to CoreData
-    func saveQuest() -> Bool {
+    func saveQuest(managedContext: NSManagedObjectContext, saveQuest: Quest) -> Bool {
         // Saves the quest to CoreData
+        let entity = NSEntityDescription.entityForName("Quest", inManagedObjectContext: managedContext)
+        let quest = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
-        // Temp change later
+        quest.setValue(saveQuest.title, forKey: "title")
+        quest.setValue(saveQuest.givenBy, forKey: "givenBy")
+        quest.setValue(saveQuest.notes, forKey: "notes")
+        quest.setValue(saveQuest.date, forKey: "date")
+        
+        if managedContext.hasChanges {
+            do {
+                try managedContext.save()
+            } catch {
+                let nserror = error as NSError
+                print("ERROR: \(nserror), \(nserror.userInfo)")
+                return false
+            }
+            return true
+        }
         return false
         
     }
@@ -42,4 +62,6 @@ class Quest {
         // Temp change later
         return false
     }
+    
+    
 }

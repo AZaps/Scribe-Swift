@@ -64,9 +64,20 @@ class ViewController: UIViewController {
     
     // Landing page to display upcoming reminder or user pinned reminder
     func displayPinnedQuest(qst: Quest) {
-        titleLabel.text = qst.debugTestQuest.title
-        timeRemainingLabel.text = "\(qst.debugTestQuest.date.toMonthAndDay()), \(qst.debugTestQuest.date.toShortStyleTime())"
-        givenByLabel.text = qst.debugTestQuest.givenBy
+        
+        qst.title = "Test title"
+        qst.givenBy = "Test Given By"
+        qst.notes = "Test Notes"
+        let currentDate = NSDate()
+        qst.date = currentDate
+        
+        titleLabel.text = qst.title
+        timeRemainingLabel.text = qst.date.toMonthAndDay() + " " + qst.date.toShortStyleTime()
+        givenByLabel.text = qst.givenBy
+        
+        //titleLabel.text = qst.debugTestQuest.title
+        //timeRemainingLabel.text = "\(qst.debugTestQuest.date.toMonthAndDay()), \(qst.debugTestQuest.date.toShortStyleTime())"
+        //givenByLabel.text = qst.debugTestQuest.givenBy
     }
 
 

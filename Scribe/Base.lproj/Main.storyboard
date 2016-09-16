@@ -258,6 +258,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="questLogDataTable" destination="zUl-mf-t4a" id="et2-mK-pBZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gmx-Dd-xFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nio-UT-Nnl" userLabel="Exit" sceneMemberID="exit"/>
