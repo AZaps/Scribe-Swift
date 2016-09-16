@@ -221,7 +221,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3110" y="422"/>
+            <point key="canvasLocation" x="3144" y="1026"/>
         </scene>
         <!--questLogView-->
         <scene sceneID="ZXZ-EM-GN3">
@@ -232,17 +232,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestCell" id="hNa-mk-Bh3">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="QuestCell" id="hNa-mk-Bh3">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hNa-mk-Bh3" id="7vK-QO-svu">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="XF5-hi-HAv" kind="show" identifier="CellDetailViewSegue" id="jE1-KU-JYB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="nbe-yb-HLE" id="Vsr-AR-Um2"/>
+                            <outlet property="dataSource" destination="nbe-yb-HLE" id="4c9-Gn-xkD"/>
                             <outlet property="delegate" destination="nbe-yb-HLE" id="mve-aQ-a4s"/>
                         </connections>
                     </tableView>
@@ -267,6 +270,78 @@
             </objects>
             <point key="canvasLocation" x="1656" y="422"/>
         </scene>
+        <!--Quest Detail View Controller-->
+        <scene sceneID="yuh-t1-kcf">
+            <objects>
+                <viewController id="XF5-hi-HAv" customClass="QuestDetailViewController" customModule="Scribe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X6p-fb-Txt"/>
+                        <viewControllerLayoutGuide type="bottom" id="AGV-QX-3xT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Uws-ho-dcN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What is Your Quest?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YMP-w5-Slk" userLabel="Quest Title">
+                                <rect key="frame" x="0.0" y="67" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ZmT-Jx-6R7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Who Gives this Quest?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t9Z-P1-b7I" userLabel="Quest Giver">
+                                <rect key="frame" x="0.0" y="129" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="OVa-Yq-F9B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete By" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XI5-jk-iIZ" userLabel="Date Complete By">
+                                <rect key="frame" x="0.0" y="191" width="600" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="KqU-K8-9XM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="S93-Up-h68" userLabel="Notes View">
+                                <rect key="frame" x="0.0" y="272" width="600" height="155"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XI5-jk-iIZ" firstAttribute="trailing" secondItem="S93-Up-h68" secondAttribute="trailing" id="2fD-Uh-GrA"/>
+                            <constraint firstItem="XI5-jk-iIZ" firstAttribute="top" secondItem="t9Z-P1-b7I" secondAttribute="bottom" constant="12" id="3Yy-5K-pkI"/>
+                            <constraint firstItem="YMP-w5-Slk" firstAttribute="trailing" secondItem="t9Z-P1-b7I" secondAttribute="trailing" id="8WT-dM-EvG"/>
+                            <constraint firstItem="t9Z-P1-b7I" firstAttribute="trailing" secondItem="XI5-jk-iIZ" secondAttribute="trailing" id="HZA-xt-IeB"/>
+                            <constraint firstItem="YMP-w5-Slk" firstAttribute="top" secondItem="X6p-fb-Txt" secondAttribute="bottom" constant="3" id="Nx4-Ee-tUE"/>
+                            <constraint firstItem="YMP-w5-Slk" firstAttribute="leading" secondItem="t9Z-P1-b7I" secondAttribute="leading" id="NzC-AE-BSA"/>
+                            <constraint firstItem="XI5-jk-iIZ" firstAttribute="leading" secondItem="S93-Up-h68" secondAttribute="leading" id="RCS-na-dXw"/>
+                            <constraint firstItem="AGV-QX-3xT" firstAttribute="top" secondItem="S93-Up-h68" secondAttribute="bottom" constant="173" id="Xqw-Zv-UX0"/>
+                            <constraint firstItem="t9Z-P1-b7I" firstAttribute="top" secondItem="YMP-w5-Slk" secondAttribute="bottom" constant="12" id="ZiS-n7-NLY"/>
+                            <constraint firstItem="YMP-w5-Slk" firstAttribute="leading" secondItem="Uws-ho-dcN" secondAttribute="leading" id="bDU-Fh-gKp"/>
+                            <constraint firstItem="S93-Up-h68" firstAttribute="top" secondItem="XI5-jk-iIZ" secondAttribute="bottom" constant="8" id="f7Y-Jc-803"/>
+                            <constraint firstItem="t9Z-P1-b7I" firstAttribute="leading" secondItem="XI5-jk-iIZ" secondAttribute="leading" id="pTH-NL-Lla"/>
+                            <constraint firstAttribute="trailing" secondItem="YMP-w5-Slk" secondAttribute="trailing" id="pXH-f4-m1h"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="questCompleteByLabel" destination="XI5-jk-iIZ" id="3jR-2H-ZeV"/>
+                        <outlet property="questGiverField" destination="t9Z-P1-b7I" id="ipk-KO-edx"/>
+                        <outlet property="questNotesView" destination="S93-Up-h68" id="TDD-kL-DBh"/>
+                        <outlet property="questTitleField" destination="YMP-w5-Slk" id="gvt-iU-e15"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="phy-ZA-jnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2385" y="61"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="v1k-pm-hLV">
             <objects>
@@ -283,7 +358,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJi-ZA-UzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2365" y="422"/>
+            <point key="canvasLocation" x="2377" y="826"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FCn-ma-E1B">

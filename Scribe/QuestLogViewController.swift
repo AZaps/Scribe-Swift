@@ -11,7 +11,7 @@
 import UIKit
 import CoreData
 
-class QuestLogViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class QuestLogViewController: UITableViewController,NSFetchedResultsControllerDelegate {
     
     var quests = [NSManagedObject]()
     
@@ -52,6 +52,7 @@ class QuestLogViewController: UITableViewController, NSFetchedResultsControllerD
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: - Override Table Views
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("QuestCell")
         
@@ -99,7 +100,24 @@ class QuestLogViewController: UITableViewController, NSFetchedResultsControllerD
         return quests.count
     }
     
-    
+    // MARK: - Prepare for segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "CellDetailViewSegue" {
+            // Delegate to ViewController
+            let cellDetailViewController = segue.destinationViewController as! QuestDetailViewController
+            // Get the index path from the selected cell
+            let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
+            // Get the cell from the selected index row
+            let selectedCell = quests[selectedIndex!.row]
+            
+            // Get properties of the cell to send
+            cellDetailViewController.selectedQuest.title = selectedCell.valueForKey("title") as! String
+            cellDetailViewController.selectedQuest.givenBy = selectedCell.valueForKey("givenBy") as? String
+            cellDetailViewController.selectedQuest.notes = selectedCell.valueForKey("notes") as? String
+            cellDetailViewController.selectedQuest.date = selectedCell.valueForKey("date") as! NSDate
+        }
+    }
+
     @IBOutlet var questLogDataTable: UITableView!
     
     @IBAction func viewQuestLogViewController(segue: UIStoryboardSegue) {
