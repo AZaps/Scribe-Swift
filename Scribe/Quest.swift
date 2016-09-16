@@ -63,5 +63,12 @@ class Quest {
         return false
     }
     
+    func debugPrint(tmpQuest: Quest) {
+        print("Title: \(tmpQuest.title)")
+        print("Given By: \(tmpQuest.givenBy)")
+        print("Date: \(tmpQuest.date)")
+        print("Notes: \(tmpQuest.notes)")
+    }
+    
     
 }
