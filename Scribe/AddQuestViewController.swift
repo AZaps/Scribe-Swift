@@ -13,7 +13,6 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate, UITextViewD
     // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Assign text delegates
         self.addQuestTitleField.delegate = self
         self.addGivenByField.delegate = self
@@ -68,11 +67,25 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate, UITextViewD
             presentViewController(noTitleAlert, animated: true, completion: nil)
             
         } else {
-            print("Saving")
-            // Save the quest
+            // Get properties
+            let saveQuest = Quest()
+            saveQuest.title = addQuestTitleField.text!
+            saveQuest.givenBy = addGivenByField.text
+            if saveQuest.notes == "Add additional information?" {
+                saveQuest.notes = ""
+            } else {
+                saveQuest.notes = addNotesView.text
+            }
+            saveQuest.date = completionDatePicker.date
             
-            // Return back to the quest log
-            self.performSegueWithIdentifier("saveQuestBtn", sender: self)
+            // Save the quest
+            let appD = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appD.managedObjectContext
+            if saveQuest.saveQuest(managedContext, saveQuest: saveQuest) {
+                self.performSegueWithIdentifier("saveQuestBtn", sender: self)
+            } else {
+                print("There was an error")
+            }
         }
     }
     
