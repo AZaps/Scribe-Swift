@@ -17,11 +17,11 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate, UITextViewD
         self.addQuestTitleField.delegate = self
         self.addGivenByField.delegate = self
         self.addNotesView.delegate = self
-        completionDatePicker.addTarget(self, action: #selector(datePickerChange(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        completionDatePicker.addTarget(self, action: #selector(datePickerChange(_:)), for: UIControlEvents.valueChanged)
         
         // Create notifications for when the keyboard appears to change the scroll view
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddQuestViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddQuestViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddQuestViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddQuestViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         // Set the date to the current date and update the Complete By label with the date and time
         formatDateView()
@@ -38,7 +38,7 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Outlets
@@ -52,26 +52,26 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate, UITextViewD
 
     // MARK: - Action functions
     // Gesture based by tapping on white space to dismiss keyboard
-    @IBAction func hideKeyboard(sender: AnyObject) {
+    @IBAction func hideKeyboard(_ sender: AnyObject) {
         addQuestTitleField.endEditing(true)
         addGivenByField.endEditing(true)
         addNotesView.endEditing(true)
     }
     
     // Saves the information inputted as a new quest or alerts the user that there isn't a title to the quest
-    @IBAction func saveNewQuest(sender: AnyObject) {
+    @IBAction func saveNewQuest(_ sender: AnyObject) {
         if addQuestTitleField.text == "" {
             // Alert user there isn't a title
-            let noTitleAlert = UIAlertController(title: "No Quest Title", message: "Can't save a quest without a title!", preferredStyle: UIAlertControllerStyle.Alert)
-            noTitleAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in Void.self } ))
-            presentViewController(noTitleAlert, animated: true, completion: nil)
+            let noTitleAlert = UIAlertController(title: "No Quest Title", message: "Can't save a quest without a title!", preferredStyle: UIAlertControllerStyle.alert)
+            noTitleAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) -> Void in ()} ))
+            present(noTitleAlert, animated: true, completion: nil)
             
         } else {
             // Get properties
             let saveQuest = Quest()
             saveQuest.title = addQuestTitleField.text!
             saveQuest.givenBy = addGivenByField.text
-            if saveQuest.notes == "Add additional information?" {
+            if addNotesView.text == "Add additional information?" {
                 saveQuest.notes = ""
             } else {
                 saveQuest.notes = addNotesView.text
@@ -79,10 +79,10 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate, UITextViewD
             saveQuest.date = completionDatePicker.date
             
             // Save the quest
-            let appD = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appD = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appD.managedObjectContext
             if saveQuest.saveQuest(managedContext, saveQuest: saveQuest) {
-                self.performSegueWithIdentifier("saveQuestBtn", sender: self)
+                self.performSegue(withIdentifier: "saveQuestBtn", sender: self)
             } else {
                 print("There was an error")
             }
@@ -91,7 +91,7 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate, UITextViewD
     
     // MARK: - Special functions
     // Keyboard dismisses on return key
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case addQuestTitleField:
             addQuestTitleField.resignFirstResponder()
@@ -105,12 +105,12 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
     
     // Adds a done key to the keyboard when selecting the textView
-    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         let doneKeyboardButton = UIToolbar()
         doneKeyboardButton.sizeToFit()
-        let flexibleSpaceItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
+        let flexibleSpaceItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
         // Since the #selector target doesn't take any input it needs to be listed as 'foo as () -> ()'
-        let doneItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(textViewDone as () -> ()))
+        let doneItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(textViewDone as () -> ()))
         let toolbarButtons = [flexibleSpaceItem, doneItem]
         doneKeyboardButton.setItems(toolbarButtons, animated: false)
         textView.inputAccessoryView = doneKeyboardButton
@@ -124,30 +124,30 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
     
     // Removes the placeholder text when editing
-    func textViewDidBeginEditing(textView: UITextView) {
+    func textViewDidBeginEditing(_ textView: UITextView) {
         if textView == addNotesView {
             if addNotesView.text == "Add additional information?" {
                 addNotesView.text = ""
-                addNotesView.textColor = UIColor.blackColor()
+                addNotesView.textColor = UIColor.black
             }
         }
     }
     
     // Adds the placeholder text after editing and nothing inputted
-    func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         if textView == addNotesView {
             if addNotesView.text == "" {
                 addNotesView.text = "Add additional information?"
-                addNotesView.textColor = UIColor.lightGrayColor()
+                addNotesView.textColor = UIColor.lightGray
             }
         }
     }
     
     // Will add a single line to the bottom of the textField inputs
-    func addBottomBorders(textField: UITextField) {
+    func addBottomBorders(_ textField: UITextField) {
         let border = CALayer()
         let width = CGFloat(1.0)
-        border.borderColor = UIColor.blackColor().CGColor
+        border.borderColor = UIColor.black.cgColor
         border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:  textField.frame.size.width, height: textField.frame.size.height)
         border.borderWidth = width
         textField.layer.addSublayer(border)
@@ -155,22 +155,22 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
     
     // Changes the scroll view so the selected text item is at the top
-    func adjustInsetForKeyboardShow(show: Bool, notification: NSNotification) {
+    func adjustInsetForKeyboardShow(_ show: Bool, notification: Notification) {
         // Determine which entry element is selected to adjust height properly
-        if addQuestTitleField.isFirstResponder() {
+        if addQuestTitleField.isFirstResponder {
             scrollView.setContentOffset(addQuestTitleField.frame.origin, animated: true)
-        } else if addGivenByField.isFirstResponder() {
+        } else if addGivenByField.isFirstResponder {
             scrollView.setContentOffset(addGivenByField.frame.origin, animated: true)
-        } else if addNotesView.isFirstResponder() {
+        } else if addNotesView.isFirstResponder {
            scrollView.setContentOffset(addNotesView.frame.origin, animated: true)
         }
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(_ notification: Notification) {
         adjustInsetForKeyboardShow(true, notification: notification)
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    func keyboardWillHide(_ notification: Notification) {
         adjustInsetForKeyboardShow(false, notification: notification)
     }
     
@@ -178,7 +178,7 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate, UITextViewD
     // Uses NSDate() extensions for the date and time found in DateExtenstions.swift
     func formatDateView() {
         // Set the date picker to the current date
-        let currentDate = NSDate()
+        let currentDate = Date()
         completionDatePicker.minimumDate = currentDate
         completionDatePicker.date = currentDate
         
@@ -187,7 +187,7 @@ class AddQuestViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
     
     // Changes complete by label when date changed
-    func datePickerChange(datePicker: UIDatePicker) {
+    func datePickerChange(_ datePicker: UIDatePicker) {
         completeByLabel.text = "Complete By: \(datePicker.date.toMonthAndDay()), \(datePicker.date.toShortStyleTime())"
     }
 }

@@ -19,16 +19,16 @@ class QuestLogViewController: UITableViewController,NSFetchedResultsControllerDe
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Update the array to show on the UITableView
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let sortDescription = NSSortDescriptor(key: "date", ascending: true)
-        let fetchRequest = NSFetchRequest(entityName: "Quest")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Quest")
         fetchRequest.sortDescriptors = [sortDescription]
         do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
+            let results = try managedContext.fetch(fetchRequest)
             /*
              Using 
                 quests = results as! [NSManagedObject]
@@ -53,31 +53,31 @@ class QuestLogViewController: UITableViewController,NSFetchedResultsControllerDe
     }
     
     // MARK: - Override Table Views
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("QuestCell")
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "QuestCell")
         
-        let quest = quests[indexPath.row]
+        let quest = quests[(indexPath as NSIndexPath).row]
         
-        cell!.textLabel!.text = quest.valueForKey("title") as? String
+        cell!.textLabel!.text = quest.value(forKey: "title") as? String
         
         return cell!
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
             // Delete core data entry
-            let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let selectedCell = tableView.cellForRow(at: indexPath)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext
-            let fetchRequest = NSFetchRequest(entityName: "Quest")
-            let referenceString: String = (selectedCell!.valueForKey("text"))! as! String
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Quest")
+            let referenceString: String = (selectedCell!.value(forKey: "text"))! as! String
             let searchPredicate = NSPredicate(format: "title == %@", referenceString)
             fetchRequest.predicate = searchPredicate
             
             do {
-                let fetchResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+                let fetchResults = try managedContext.fetch(fetchRequest) as? [NSManagedObject]
                 for item in fetchResults! {
-                    managedContext.deleteObject(item)
+                    managedContext.delete(item)
                     if managedContext.hasChanges {
                         do {
                             try managedContext.save()
@@ -90,43 +90,43 @@ class QuestLogViewController: UITableViewController,NSFetchedResultsControllerDe
                 print("ERROR: \(error)")
             }
             // Delete array entry
-            quests.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            quests.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             reloadTable()
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return quests.count
     }
     
     // MARK: - Prepare for segue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CellDetailViewSegue" {
             // Delegate to ViewController
-            let cellDetailViewController = segue.destinationViewController as! QuestDetailViewController
+            let cellDetailViewController = segue.destination as! QuestDetailViewController
             // Get the index path from the selected cell
-            let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
+            let selectedIndex = self.tableView.indexPath(for: sender as! UITableViewCell)
             // Get the cell from the selected index row
-            let selectedCell = quests[selectedIndex!.row]
+            let selectedCell = quests[(selectedIndex! as NSIndexPath).row]
             
             // Get properties of the cell to send
-            cellDetailViewController.selectedQuest.title = selectedCell.valueForKey("title") as! String
-            cellDetailViewController.selectedQuest.givenBy = selectedCell.valueForKey("givenBy") as? String
-            cellDetailViewController.selectedQuest.notes = selectedCell.valueForKey("notes") as? String
-            cellDetailViewController.selectedQuest.date = selectedCell.valueForKey("date") as! NSDate
+            cellDetailViewController.selectedQuest.title = selectedCell.value(forKey: "title") as! String
+            cellDetailViewController.selectedQuest.givenBy = selectedCell.value(forKey: "givenBy") as? String
+            cellDetailViewController.selectedQuest.notes = selectedCell.value(forKey: "notes") as? String
+            cellDetailViewController.selectedQuest.date = selectedCell.value(forKey: "date") as! Date
         }
     }
 
     @IBOutlet var questLogDataTable: UITableView!
     
-    @IBAction func viewQuestLogViewController(segue: UIStoryboardSegue) {
+    @IBAction func viewQuestLogViewController(_ segue: UIStoryboardSegue) {
     }
-    @IBAction func saveQuestToQuestLogViewController(segue: UIStoryboardSegue) {
+    @IBAction func saveQuestToQuestLogViewController(_ segue: UIStoryboardSegue) {
     }
     
     func reloadTable() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.tableView.reloadData()
         })
     }

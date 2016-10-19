@@ -282,7 +282,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What is Your Quest?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YMP-w5-Slk" userLabel="Quest Title">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Quest Title Field" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YMP-w5-Slk" userLabel="Quest Title">
                                 <rect key="frame" x="0.0" y="67" width="600" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ZmT-Jx-6R7"/>
@@ -290,7 +290,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Who Gives this Quest?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t9Z-P1-b7I" userLabel="Quest Giver">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Given By Field" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t9Z-P1-b7I" userLabel="Quest Giver">
                                 <rect key="frame" x="0.0" y="129" width="600" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="OVa-Yq-F9B"/>
