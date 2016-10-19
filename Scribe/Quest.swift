@@ -27,14 +27,14 @@ class Quest {
     var title: String = ""
     var givenBy: String?
     var notes: String?
-    var date: NSDate = NSDate()
+    var date: Date = Date()
     
     
     // Saves the newly created quest to CoreData
-    func saveQuest(managedContext: NSManagedObjectContext, saveQuest: Quest) -> Bool {
+    func saveQuest(_ managedContext: NSManagedObjectContext, saveQuest: Quest) -> Bool {
         // Saves the quest to CoreData
-        let entity = NSEntityDescription.entityForName("Quest", inManagedObjectContext: managedContext)
-        let quest = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let entity = NSEntityDescription.entity(forEntityName: "Quest", in: managedContext)
+        let quest = NSManagedObject(entity: entity!, insertInto: managedContext)
         
         quest.setValue(saveQuest.title, forKey: "title")
         quest.setValue(saveQuest.givenBy, forKey: "givenBy")
@@ -63,7 +63,7 @@ class Quest {
         return false
     }
     
-    func debugPrint(tmpQuest: Quest) {
+    func debugPrint(_ tmpQuest: Quest) {
         print("Title: \(tmpQuest.title)")
         print("Given By: \(tmpQuest.givenBy)")
         print("Date: \(tmpQuest.date)")

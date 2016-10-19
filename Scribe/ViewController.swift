@@ -36,14 +36,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var completeLabel: UIButton!
     @IBOutlet weak var viewQuestListLabel: UIButton!
     
-    @IBAction func viewPinnedQuestViewController(segue: UIStoryboardSegue) {
+    @IBAction func viewPinnedQuestViewController(_ segue: UIStoryboardSegue) {
     }
     
     // Add one sided borders to bottom buttons to distinguish touch areas
-    func addBtnBorder(btn: UIButton!) {
+    func addBtnBorder(_ btn: UIButton!) {
         let border = CALayer()
         let width = CGFloat(1.0)
-        border.borderColor = UIColor.whiteColor().CGColor
+        border.borderColor = UIColor.white.cgColor
         
         switch btn {
         case completeLabel:
@@ -63,12 +63,12 @@ class ViewController: UIViewController {
     }
     
     // Landing page to display upcoming reminder or user pinned reminder
-    func displayPinnedQuest(qst: Quest) {
+    func displayPinnedQuest(_ qst: Quest) {
         
         qst.title = "Test title"
         qst.givenBy = "Test Given By"
         qst.notes = "Test Notes"
-        let currentDate = NSDate()
+        let currentDate = Date()
         qst.date = currentDate
         
         titleLabel.text = qst.title
